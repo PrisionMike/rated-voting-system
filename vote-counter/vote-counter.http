@@ -1,6 +1,18 @@
 @vote_counter_HostAddress = http://localhost:5241
 
-GET {{vote_counter_HostAddress}}/weatherforecast/
-Accept: application/json
+### Cast a vote
+POST {{vote_counter_HostAddress}}/api/VoteCasting
+Content-Type: application/json
+
+{
+  "candidate1": 1,
+  "candidate2": 0,
+  "candidate3": 0,
+  "candidate4": 1,
+  "electionId": 123,
+  "timestamp": "2025-03-04T12:00:00Z"
+}
+
+
 
 ###
