@@ -1,8 +1,0 @@
-/home/strider/rated-voting-system/vote-counter.Tests/bin/Debug/net9.0/.msCoverageSourceRootsMapping_vote-counter.Tests
-/home/strider/rated-voting-system/vote-counter.Tests/bin/Debug/net9.0/CoverletSourceRootsMapping_vote-counter.Tests
-/home/strider/rated-voting-system/vote-counter.Tests/obj/Debug/net9.0/vote-counter.Tests.csproj.AssemblyReference.cache
-/home/strider/rated-voting-system/vote-counter.Tests/obj/Debug/net9.0/vote-counter.Tests.GeneratedMSBuildEditorConfig.editorconfig
-/home/strider/rated-voting-system/vote-counter.Tests/obj/Debug/net9.0/vote-counter.Tests.AssemblyInfoInputs.cache
-/home/strider/rated-voting-system/vote-counter.Tests/obj/Debug/net9.0/vote-counter.Tests.AssemblyInfo.cs
-/home/strider/rated-voting-system/vote-counter.Tests/obj/Debug/net9.0/vote-counter.Tests.csproj.CoreCompileInputs.cache
-/home/strider/rated-voting-system/vote-counter.Tests/obj/Debug/net9.0/vote-counter.Tests.sourcelink.json
