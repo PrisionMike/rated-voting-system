@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.EntityFrameworkCore;
+using Moq;
 using vote_counter.Controllers;
 using vote_counter.Data;
 using vote_counter.Models;
@@ -11,9 +12,10 @@ public class UnitTest1
     public async Task one_vote_election()
     {
         var mockdbContext = new Mock<AppDbContext>();
-        var mockDbSet = new Mock<Vote>();
+        var mockDbSet = new Mock<DbSet<Vote>>();
         
         mockdbContext.Setup(db => db.Votes).Returns(mockDbSet.Object);
+        
         var controller = new VoteCastingController(mockdbContext.Object);
         var vote = new Vote {Candidate1 = 1, ElectionId = 1};
         
