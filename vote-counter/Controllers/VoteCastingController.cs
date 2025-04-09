@@ -13,11 +13,11 @@ public class VoteCastingController(AppDbContext context) : ControllerBase
     {
         context.Votes.Add(vote);
         await context.SaveChangesAsync();
-        return true;
+        return Ok(true);
     }
 
     [HttpGet]
-    public Candidate GetElectionResult(int electionId)
+    public ActionResult<Candidate> GetElectionResult(int electionId)
     {
         var results = new List<int>();
         var allVotes = context.Votes.Select(x => x).Where(x => x.ElectionId == electionId).ToList();
@@ -26,10 +26,12 @@ public class VoteCastingController(AppDbContext context) : ControllerBase
         results.Add(allVotes.Sum(x => x.Candidate3));
         results.Add(allVotes.Sum(x => x.Candidate4));
         
-        var winningCandidateId = results.IndexOf(results.Max());
+        var winningCandidateId = results.IndexOf(results.Max()) + 1;
+
+        var winner = context.Candidates
+            .Select(x => x).SingleOrDefault(x => x.CandidateId == winningCandidateId);
+        // ?? throw new InvalidOperationException($"No candidate found with ID {winningCandidateId}");
         
-        return context.Candidates
-                   .Select(x => x).SingleOrDefault(x => x.CandidateId == winningCandidateId)
-               ?? throw new InvalidOperationException();
+        return winner == null ? NotFound($"No candidate found with ID {winningCandidateId}") : Ok(winner);
     }
 }

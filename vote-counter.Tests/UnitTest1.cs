@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using vote_counter.Controllers;
 using vote_counter.Data;
 using vote_counter.Models;
@@ -15,16 +15,22 @@ public class UnitTest1
             .UseInMemoryDatabase(databaseName: "one_vote_election")
             .Options;
 
-        using (var context = new AppDbContext(options))
-        {
-            var controller = new VoteCastingController(context);
-            var vote = new Vote {Candidate1 = 1, ElectionId = 1};
+        await using var context = new AppDbContext(options);
+        var candidate = new Candidate { CandidateId = 1, FirstName = "John" };
+        context.Candidates.Add(candidate);
+            
+        await context.SaveChangesAsync();
+        var controller = new VoteCastingController(context);
+        var vote = new Vote {Candidate1 = 1, ElectionId = 1};
         
-            await controller.voteCasting(vote);
-            var result = controller.GetElectionResult(1);
+        await controller.voteCasting(vote);
+        var actionResult = controller.GetElectionResult(1);
         
-            Assert.Equal(1, result.CandidateId);
-        }
+        var okResult = Assert.IsType<ActionResult<Candidate>>(actionResult);
+        var objectResult = Assert.IsType<OkObjectResult>(okResult.Result);
+
+        var winner = Assert.IsType<Candidate>(objectResult.Value);
+        Assert.Equal(1, winner.CandidateId);
     }
     
 }
