@@ -1,0 +1,2 @@
+- [ ] Rename Vote to Ballot.
+- [ ] Learn how to think in an imperative style.
