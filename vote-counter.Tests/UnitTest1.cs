@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using vote_counter.Controllers;
 using vote_counter.Data;
 using vote_counter.Models;
+using vote_counter.Models.Implementation;
 
 namespace vote_counter.Tests;
 
@@ -21,7 +22,7 @@ public class UnitTest1
             
         await context.SaveChangesAsync();
         var controller = new VoteCastingController(context);
-        var vote = new Vote {Candidate1 = 1, ElectionId = 1};
+        var vote = new Ballot {Candidate1 = 1, ElectionId = 1};
         
         await controller.voteCasting(vote);
         var actionResult = controller.GetElectionResult(1);

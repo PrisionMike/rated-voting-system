@@ -1,6 +1,6 @@
-namespace vote_counter.Models;
+namespace vote_counter.Models.Interfaces;
 
-public class Voter
+public interface IVoter
 {
     public int VoterId { get; set; }
     public string VoterName  { get; set; }

@@ -1,6 +1,8 @@
-namespace vote_counter.Models;
+using vote_counter.Models.Interfaces;
 
-public class Candidate
+namespace vote_counter.Models.Implementation;
+
+public class Candidate : ICandidate
 {
     public int CandidateId { get; set; }
     public string FirstName { get; set; }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using vote_counter.Data;
 using vote_counter.Models;
+using vote_counter.Models.Implementation;
 
 namespace vote_counter.Controllers;
 
@@ -9,9 +10,9 @@ namespace vote_counter.Controllers;
 public class VoteCastingController(AppDbContext context) : ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult<bool>> voteCasting(Vote vote)
+    public async Task<ActionResult<bool>> voteCasting(Ballot ballot)
     {
-        context.Votes.Add(vote);
+        context.Ballots.Add(ballot);
         await context.SaveChangesAsync();
         return Ok(true);
     }
@@ -20,11 +21,10 @@ public class VoteCastingController(AppDbContext context) : ControllerBase
     public ActionResult<Candidate> GetElectionResult(int electionId)
     {
         var results = new List<int>();
-        var allVotes = context.Votes.Select(x => x).Where(x => x.ElectionId == electionId).ToList();
+        var allVotes = context.Ballots.Select(x => x).Where(x => x.ElectionId == electionId).ToList();
         results.Add(allVotes.Sum(x => x.Candidate1));
         results.Add(allVotes.Sum(x => x.Candidate2));
         results.Add(allVotes.Sum(x => x.Candidate3));
-        results.Add(allVotes.Sum(x => x.Candidate4));
         
         var winningCandidateId = results.IndexOf(results.Max()) + 1;
 
