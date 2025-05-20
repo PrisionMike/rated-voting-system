@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("vote-counter.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+146513eb037b3057d55480ddab6fa5682c403369")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a470a10aa2776d45bb5a2c46f1a444ac38daa127")]
 [assembly: System.Reflection.AssemblyProductAttribute("vote-counter.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("vote-counter.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

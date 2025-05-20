@@ -1,5 +1,7 @@
 ### Rated Voting System
 
-Silver Bullet. Why not use it?  
+Rate. Don't Vote.
 
 Practise project.
+
+https://trello.com/b/37llrHWe/geeta-db-weekly

@@ -10,7 +10,7 @@ namespace vote_counter.Controllers;
 public class VoteCastingController(AppDbContext context) : ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult<bool>> voteCasting(Ballot ballot)
+    public async Task<ActionResult<bool>> CastBallot(Ballot ballot)
     {
         context.Ballots.Add(ballot);
         await context.SaveChangesAsync();
